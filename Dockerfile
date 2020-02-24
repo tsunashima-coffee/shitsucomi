@@ -16,5 +16,3 @@ RUN set -x && \
 COPY . /shitsucomi
 
 RUN yarn install
-
-# CMD ["rails", "server", "-b", "0.0.0.0"]
