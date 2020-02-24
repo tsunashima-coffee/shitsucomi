@@ -22,3 +22,19 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+```
+git clone git@github.com:tsunashima-coffee/shitsucomi.git
+```
+
+```
+docker network create shitsucomi_network
+```
+
+```
+docker-compose up --build
+```
+
+```
+docker-compose run web bundle exec rails db:create
+```
