@@ -22,9 +22,9 @@ FROM ruby:2.7.0
 
 # ENV BUNDLE_GITHUB__COM=$USERNAME:$ACCESS_TOKEN
 
-WORKDIR /shitsukomi
-ADD Gemfile /shitsukomi/Gemfile
-ADD Gemfile.lock /shitsukomi/Gemfile.lock
+WORKDIR /shitsucomi
+ADD Gemfile /shitsucomi/Gemfile
+ADD Gemfile.lock /shitsucomi/Gemfile.lock
 
 RUN set -x && \
     apt-get -qq update && \
@@ -33,9 +33,9 @@ RUN set -x && \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
     apt-get -qq update && apt-get -y install yarn && \
-    # bundle exec rails webpacker:install
+    # bundle exec rails webpacker:install && \
     bundle install
 
-COPY . /shitsukomi
+COPY . /shitsucomi
 
 # CMD ["rails", "server", "-b", "0.0.0.0"]

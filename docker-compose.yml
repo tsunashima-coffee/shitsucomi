@@ -3,14 +3,14 @@ services:
   web:
     build: .
     volumes:
-      - .:/shitsukomi
+      - .:/shitsucomi
     ports:
       - "3000:3000"
-    command: bash -c 'bundle install && bundle exec rails s -b 0.0.0.0'
+    command: bundle exec rails s -b 0.0.0.0
     tty: true
     stdin_open: true
     networks:
-      - shitsukomi_network
+      - shitsucomi_network
     environment:
       MYSQL_HOST: db
   db:
@@ -18,15 +18,15 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
     networks:
-      - shitsukomi_network
+      - shitsucomi_network
     volumes:
       - ./mysql:/var/lib/mysql"
     ports:
       - "3306:3306"
 
-volumes:
-  mysql-webapp-data:
+# volumes:
+#   mysql-webapp-data:
 
 networks:
-  shitsukomi_network:
+  shitsucomi_network:
     external: true
