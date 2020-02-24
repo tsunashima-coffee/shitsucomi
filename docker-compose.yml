@@ -1,0 +1,30 @@
+version: '3'
+services:
+  web:
+    build: .
+    volumes:
+      - .:/shitsukomi
+    ports:
+      - "3000:3000"
+    # command: bundle exec rails s -b 0.0.0.0
+    tty: true
+    stdin_open: true
+    networks:
+      - shitsukomi_network
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - shitsukomi_network
+    # volumes:
+    #   - .:/var/lib/mysql"
+    ports:
+      - "3306:3306"
+
+volumes:
+  mysql-webapp-data:
+
+networks:
+  shitsukomi_network:
+    external: true
