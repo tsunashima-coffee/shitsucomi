@@ -6,19 +6,21 @@ services:
       - .:/shitsukomi
     ports:
       - "3000:3000"
-    # command: bundle exec rails s -b 0.0.0.0
+    command: bash -c 'bundle install && bundle exec rails s -b 0.0.0.0'
     tty: true
     stdin_open: true
     networks:
       - shitsukomi_network
+    environment:
+      MYSQL_HOST: db
   db:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: password
     networks:
       - shitsukomi_network
-    # volumes:
-    #   - .:/var/lib/mysql"
+    volumes:
+      - ./mysql:/var/lib/mysql"
     ports:
       - "3306:3306"
 
